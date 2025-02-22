@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+int main(){
+    ll n;
+    cin>>n;
+    ll i = 1 ;
+    ll arr[n+1] = {0};
+    ll abb[n+1] = {0};
+    while(i<=n){
+        cin>>arr[i];
+        i++;
+    }
+    while(i<=n){
+        cin>>abb[i];
+        i++;
+    }
+    ll dp[n+1] = {0};
+    dp[1] = max(arr[1],abb[1]);
+    dp[2] = max(dp[i],max(arr[2],abb[2]));
+    i = 3;
+    while(i<=n){
+        ll x = dp[i-1];
+        ll y = abb[i]+dp[i-2];
+        ll z = arr[i]+dp[i-2];
+        dp[i] = max(x,max(y,z));
+        cout<<i<<" ";cout<<dp[i]<<endl;
+        i++;
+
+    }
+    cout<<dp[n];
+
+
+
+
+    return 0;
+
+
+
+
+
+
+
+} 
